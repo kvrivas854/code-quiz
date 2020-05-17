@@ -1,12 +1,18 @@
+
+// Variables connect to HTML:
+// Click the start button to start the game.
 const startButton = document.getElementById('start-btn');
+//  Click the next button to see the next question.
 const nextButton = document.getElementById('next-btn');
+// Hold's questions for quiz
 const questionContainerElement = document.getElementById
 ("question-container");
+
 const questionElement = document.getElementById('question')
 const answerButtonsElement = document.getElementById('answer-buttons')
 const timerElement = document.getElementById('timer')
 let shuffledQuestions, currentQuestionsIndex
-
+let scoreCardElement = document.getElementById('score')
 
 startButton.addEventListener('click', startGame);
 nextButton.addEventListener('click', () => {
@@ -19,10 +25,10 @@ nextButton.addEventListener('click', () => {
 
 function startTimer() {
     let seconds = 30;
-    let count = seconds.countdown;
+    let count = seconds;
     let timerElement = setInterval(function() {
         document.getElementById('timer').innerHTML='00: ' + seconds;
-        if (sec < 0) {
+        if (seconds < 0) {
             clearInterval(startTimer);
             setNextQuestion();
         }
@@ -45,20 +51,26 @@ function startTimer() {
 
 function startGame() {
 console.log('started')
+// When start button is clicked, it causes the start button to 'hide'.
 startButton.classList.add('hide')
+// Shuffles questions with Math.random
 shuffledQuestions = questions.sort(() => Math.random() - .5)
 currentQuestionsIndex = 0
+// Hide is removed to show first random question
 questionContainerElement.classList.remove('hide')
-startTimer()
+startTimer() 
+// * place an if/else statement to deduct time for answers that are incorrect
 setNextQuestion()
 }
 
-
+// Shuffles questions and resets to default state
 function setNextQuestion () {
     resetState()
     showQuestion(shuffledQuestions[currentQuestionsIndex])
 }
 
+
+// shows question and changes to show correct answer after a choice has been selected.
 function showQuestion(question) {
      questionElement.innerText = question.question
      question.answers.forEach(answer => {
@@ -70,8 +82,11 @@ function showQuestion(question) {
          }
          button.addEventListener('click', selectAnswer)
          answerButtonsElement.appendChild(button)
+         
      })
  }
+
+
 
  function resetState() {
      clearStatusClass(document.body)
@@ -81,6 +96,10 @@ function showQuestion(question) {
          (answerButtonsElement.firstChild);
      }
  }
+
+
+
+
 function selectAnswer(e) {
     const selectedButton = e.target;
     const correct = selectedButton.dataset.correct;
@@ -88,14 +107,22 @@ function selectAnswer(e) {
 Array.from(answerButtonsElement.children).forEach(button => {
     setStatusClass(button, button.dataset.correct);
 })
+
+     // Restarts quiz once it goes through all questions listed in the quiz
     if (shuffledQuestions.length > currentQuestionsIndex + 1){
         nextButton.classList.remove('hide');
     } else {
-        startButton.innerText = 'Restart'
+         startButton.innerText = 'Restart'
         startButton.classList.remove('hide')
     }
     
 }
+//  changes background color to signal is answer is right or wrong.
+
+
+
+
+
 function setStatusClass(element, correct) {
     clearStatusClass(element)
     if (correct) {
@@ -105,11 +132,14 @@ function setStatusClass(element, correct) {
         }
     }
 
+    // Removes color of background back to normal default color when next button is hit.
     function clearStatusClass(element) {
         element.classList.remove('correct');
         element.classList.remove('wrong');
     }
 
+
+    //  questions for quiz is listed here.
 const questions = [
     {
         question: "Who invented JavaScript?",
@@ -163,3 +193,16 @@ const questions = [
     },
 
 ]
+
+function showScore (score) {
+    let score = answer.correct
+    if (answer = correct)
+        .score++
+
+
+        // look into set status class to link with score
+}
+// end game
+
+
+// setTimeout function
