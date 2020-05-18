@@ -13,12 +13,13 @@ body {
     --hue: var(--hue-neutral);
     padding: 0;
     margin:0;
-    display:flex;
+    /* display:flex; */
     width: 100vw;
-    height:100vw;
+    height: 100vw;
     justify-content:center;
     align-items: center;
     background-color: hsl(var(--hue),100%,20%);
+    text-align: center;
 }
 
 body.correct {
@@ -36,20 +37,24 @@ body.wrong {
     border-radius: 5px;
     padding: 10px;
     box-shadow: 0 0 10px 2px;
+    margin: 0 auto;
 }
 .timer { 
-position: absolute;
-top: 2rem;
-font-size: 3rem;
-color: white;
-font-weight: bold;}
+    position: relative;
+    /* top: 2rem; */
+    font-size: 3rem;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
 
 .score {
-position: absolute;
-bottom: 2rem;
-font-size: 3rem;
-color: white;
-font-weight: bold;
+    position: relative;
+    /* bottom: 2rem; */
+    font-size: 3rem;
+    color: white;
+    font-weight: bold;
+    margin-top: 30px;
 }
 
 
