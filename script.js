@@ -27,7 +27,7 @@ function startTimer() {
     let seconds = 30;
     let count = seconds;
     let timerElement = setInterval(function() {
-        document.getElementById('timer').innerHTML='00: ' + seconds;
+        document.getElementById('timer').innerHTML='00:' + seconds;
         if (seconds < 0) {
             clearInterval(startTimer);
             setNextQuestion();
@@ -100,13 +100,14 @@ function showQuestion(question) {
 
 
 
+console.log(score);
 function selectAnswer(e) {
     const selectedButton = e.target;
     const correct = selectedButton.dataset.correct;
     setStatusClass(document.body, correct);
 Array.from(answerButtonsElement.children).forEach(button => {
     setStatusClass(button, button.dataset.correct);
-})
+    })
 
      // Restarts quiz once it goes through all questions listed in the quiz
     if (shuffledQuestions.length > currentQuestionsIndex + 1){
@@ -127,8 +128,10 @@ function setStatusClass(element, correct) {
     clearStatusClass(element)
     if (correct) {
         element.classList.add('correct');
+        
     } else{
         element.classList.add('wrong');
+        score -= 1;
         }
     }
 
@@ -194,14 +197,14 @@ const questions = [
 
 ]
 
-function showScore (score) {
-    let score = answer.correct
-    if (answer = correct)
-        .score++
+// function showScore () {
+//     let score = 0;
+//     if (answer = correct)
+//         .score++
 
 
         // look into set status class to link with score
-}
+// }
 // end game
 
 
