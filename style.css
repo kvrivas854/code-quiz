@@ -21,15 +21,12 @@ body {
     background-color: hsl(var(--hue),100%,20%);
     text-align: center;
 }
-
 body.correct {
     --hue: var(--hue-correct);
 }
-
 body.wrong {
     --hue: var(--hue-wrong);
 }
-
 .container {
     width: 800px;
     max-width: 80%;
@@ -47,7 +44,6 @@ body.wrong {
     font-weight: bold;
     margin-bottom: 30px;
 }
-
 .score {
     position: relative;
     /* bottom: 2rem; */
@@ -56,30 +52,24 @@ body.wrong {
     font-weight: bold;
     margin-top: 30px;
 }
-
-
-
-.btn-grid{
+.btn-grid {
     display: grid;
     grid-template-columns: repeat(2, auto);
     gap: 10 px;
     margin: 20px 0;
 }
-
 .btn {
---hue: var(--hue-neutral);
-border: 1px solid hsl(var(--hue),100%, 30%);
-background-color: hsl(var(--hue), 100%, 50%);
-border-radius: 5px;
-padding: 5px 10px;
-color:white;
-outline: none;
+    --hue: var(--hue-neutral);
+    border: 1px solid hsl(var(--hue),100%, 30%);
+    background-color: hsl(var(--hue), 100%, 50%);
+    border-radius: 5px;
+    padding: 5px 10px;
+    color:white;
+    outline: none;
 }
-
 .btn:hover {
     border-color: black;
 }
-
 .btn.correct{
     --hue: var(--hue-correct);
     color:black;

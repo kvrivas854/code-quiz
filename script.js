@@ -31,26 +31,11 @@ function startTimer() {
         if (seconds < 0) {
             clearInterval(startTimer);
             setNextQuestion();
-        }
-        
+        }  
     }, 1000);
 }
 
-// let startTime =
-// function startTimer() {
-//     timerElement.innerText = 60;
-//     startTime = new Date()
-//     setInterval(() => {
-//         timer.innerText = getTimerTime()
-//     }, 1000)
-// }
-// function getTimerTime() {
-//    return Math.floor((new Date() - startTime) / 1000)
-// }
-
-
 function startGame() {
-console.log('started')
 // When start button is clicked, it causes the start button to 'hide'.
 startButton.classList.add('hide')
 // Shuffles questions with Math.random
@@ -62,14 +47,11 @@ startTimer()
 // * place an if/else statement to deduct time for answers that are incorrect
 setNextQuestion()
 }
-
 // Shuffles questions and resets to default state
 function setNextQuestion () {
     resetState()
     showQuestion(shuffledQuestions[currentQuestionsIndex])
 }
-
-
 // shows question and changes to show correct answer after a choice has been selected.
 function showQuestion(question) {
      questionElement.innerText = question.question
@@ -81,68 +63,48 @@ function showQuestion(question) {
              button.dataset.correct = answer.correct
          }
          button.addEventListener('click', selectAnswer)
-         answerButtonsElement.appendChild(button)
-         
+         answerButtonsElement.appendChild(button) 
      })
  }
-
-
-
  function resetState() {
-     clearStatusClass(document.body)
-     nextButton.classList.add('hide')
-     while (answerButtonsElement.firstChild) {
-         answerButtonsElement.removeChild
-         (answerButtonsElement.firstChild);
-     }
+    clearStatusClass(document.body)
+    nextButton.classList.add('hide')
+    while (answerButtonsElement.firstChild) {
+        answerButtonsElement.removeChild
+        (answerButtonsElement.firstChild);
+    }
  }
-
-
-
-
-console.log(score);
 function selectAnswer(e) {
     const selectedButton = e.target;
     const correct = selectedButton.dataset.correct;
     setStatusClass(document.body, correct);
-Array.from(answerButtonsElement.children).forEach(button => {
-    setStatusClass(button, button.dataset.correct);
+    Array.from(answerButtonsElement.children).forEach(button => {
+        setStatusClass(button, button.dataset.correct);
     })
-
      // Restarts quiz once it goes through all questions listed in the quiz
-    if (shuffledQuestions.length > currentQuestionsIndex + 1){
+    if (shuffledQuestions.length > currentQuestionsIndex + 1) {
         nextButton.classList.remove('hide');
     } else {
          startButton.innerText = 'Restart'
         startButton.classList.remove('hide')
     }
-    
 }
-//  changes background color to signal is answer is right or wrong.
-
-
-
-
-
+// Changes background color to signal is answer is right or wrong.
 function setStatusClass(element, correct) {
     clearStatusClass(element)
     if (correct) {
-        element.classList.add('correct');
-        
-    } else{
+        element.classList.add('correct'); 
+    } else {
         element.classList.add('wrong');
         score -= 1;
-        }
     }
-
-    // Removes color of background back to normal default color when next button is hit.
-    function clearStatusClass(element) {
-        element.classList.remove('correct');
-        element.classList.remove('wrong');
-    }
-
-
-    //  questions for quiz is listed here.
+ }
+// Removes color of background back to normal default color when next button is hit.
+function clearStatusClass(element) {
+    element.classList.remove('correct');
+    element.classList.remove('wrong');
+}
+//Questions for quiz are listed here.
 const questions = [
     {
         question: "Who invented JavaScript?",
@@ -160,7 +122,6 @@ const questions = [
             {text: 'C. npm', correct: true}
 
         ]
-
     },
     { 
         question: 'Which tool can you use to ensure code quality?',
@@ -171,7 +132,6 @@ const questions = [
             {text: 'D. ESLint', correct: true}
 
         ]
-
     },
     { 
         question: 'Which tool is used for styling webpages?',
@@ -182,7 +142,6 @@ const questions = [
             {text: 'D. XML', correct: false}
 
         ]
-
     },
     { 
         question: 'Which is used for Connect To Database?',
@@ -192,20 +151,5 @@ const questions = [
             {text: 'C. JavaScript', correct: false},
             {text: 'D. All of the above', correct: false}
         ]
-
     },
-
 ]
-
-// function showScore () {
-//     let score = 0;
-//     if (answer = correct)
-//         .score++
-
-
-        // look into set status class to link with score
-// }
-// end game
-
-
-// setTimeout function
